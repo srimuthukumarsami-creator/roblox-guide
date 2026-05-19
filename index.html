@@ -53,7 +53,7 @@
     <h3>📝 How to Sign Up</h3>
     <ol>
       <li>Open your browser (Chrome, Safari, anything!)</li>
-      <li>Go to <strong>www.roblox.com</strong></li>
+      <li>Go to <strong>www.roblox.com</strong> 👉 <a href="https://www.roblox.com" target="_blank" class="link-btn" style="display:inline-flex;margin:0 0 0 6px;padding:4px 12px;font-size:0.8rem;">🔗 Open Roblox</a></li>
       <li>You'll see a Sign Up form right on the page</li>
       <li>Fill in your <strong>Birthday</strong> (just pick the correct date)</li>
       <li>Choose a fun <strong>Username</strong> (this is your game developer name!)</li>
@@ -79,7 +79,7 @@
   <div class="step-card">
     <h3>⬇️ Download Steps</h3>
     <ol>
-      <li>Go to <strong>www.roblox.com/create</strong></li>
+      <li>Go to <strong>www.roblox.com/create</strong> 👉 <a href="https://www.roblox.com/create" target="_blank" class="link-btn" style="display:inline-flex;margin:0 0 0 6px;padding:4px 12px;font-size:0.8rem;">🔗 Open Create Page</a></li>
       <li>Click <strong>"Start Creating"</strong></li>
       <li>It will ask you to download <strong>Roblox Studio</strong> — click Download!</li>
       <li>Once downloaded, <strong>open the installer file</strong></li>
@@ -362,7 +362,7 @@ end</pre>
     <h3>🌐 Making It Public (So Others Can Play)</h3>
     <p>By default, your game is <strong>private</strong>. Let's make it public:</p>
     <ol>
-      <li>In Roblox Studio, click <strong>File</strong> → <strong>"Game Settings"</strong></li>
+      <li>In Roblox Studio, click <strong>File</strong> → <strong>"Game Settings"</strong> (may also say <strong>"Experience Settings"</strong> in newer versions)</li>
       <li>Go to the <strong>"Permissions"</strong> tab</li>
       <li>Change it from <strong>Private</strong> to <strong>Public</strong></li>
       <li>Click <strong>Save</strong></li>
@@ -401,10 +401,10 @@ end</pre>
   <div class="step-card">
     <h3>🤖 AI Tools You Can Use (All Free!)</h3>
     <ul>
-      <li><strong>ChatGPT</strong> (chat.openai.com) — Tell it "Write me a Roblox Lua script that..." and it gives you the code!</li>
-      <li><strong>Google Gemini</strong> (gemini.google.com) — Same thing, just Google's version. Works great too!</li>
-      <li><strong>Claude</strong> (claude.ai) — Another amazing AI that writes Roblox scripts perfectly</li>
-      <li><strong>Roblox Assistant</strong> — Built RIGHT INTO Roblox Studio! Look for the AI button in the toolbar</li>
+      <li><strong>ChatGPT</strong> — Tell it "Write me a Roblox Lua script that..." and it gives you the code! <a href="https://chat.openai.com" target="_blank" class="link-btn" style="padding:4px 12px;font-size:0.78rem;">🔗 Open ChatGPT</a></li>
+      <li><strong>Google Gemini</strong> — Same thing, just Google's version. Works great too! <a href="https://gemini.google.com" target="_blank" class="link-btn link-btn-alt" style="padding:4px 12px;font-size:0.78rem;">🔗 Open Gemini</a></li>
+      <li><strong>Claude</strong> — Another amazing AI that writes Roblox scripts perfectly <a href="https://claude.ai" target="_blank" class="link-btn link-btn-alt" style="padding:4px 12px;font-size:0.78rem;">🔗 Open Claude</a></li>
+      <li><strong>Roblox Assistant</strong> — Built RIGHT INTO Roblox Studio! Look for the AI Assistant button in the top toolbar (View → Assistant)</li>
     </ul>
     <div class="tip-box">
       <strong>💡 All of these are FREE to use, Lia!</strong> You just need to create an account on any of them.
@@ -506,6 +506,30 @@ end</pre>
 </footer>
 
 <button class="scroll-top" aria-label="Scroll to top">↑</button>
+
+<!-- AI CHATBOT -->
+<button id="chat-fab" aria-label="Open AI helper">
+  🤖
+  <div class="fab-tooltip">here to help u heh 💛</div>
+</button>
+
+<div id="chat-panel">
+  <div class="chat-header">
+    <div class="chat-header-info">
+      <span class="chat-avatar">🤖</span>
+      <div>
+        <h4>Lia's Roblox Helper</h4>
+        <p>Ask me anything! I'm AI-powered ✨</p>
+      </div>
+    </div>
+    <button id="chat-close">✕</button>
+  </div>
+  <div id="chat-messages"></div>
+  <div class="chat-input-area">
+    <input id="chat-input" type="text" placeholder="Ask me anything about Roblox..." autocomplete="off">
+    <button id="chat-send">➤</button>
+  </div>
+</div>
 
 <script src="script.js"></script>
 </body>

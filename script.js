@@ -107,4 +107,80 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.scroll-top').addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+
+  // === AI CHATBOT ===
+  initChatbot();
 });
+
+// === CHATBOT ===
+function initChatbot() {
+  const fab = document.getElementById('chat-fab');
+  const panel = document.getElementById('chat-panel');
+  const close = document.getElementById('chat-close');
+  const input = document.getElementById('chat-input');
+  const send = document.getElementById('chat-send');
+  const msgs = document.getElementById('chat-messages');
+
+  if (!fab) return;
+
+  let history = [];
+  const SYS = `You are a super friendly, cute, and helpful AI assistant on a Roblox game creation guide website made for a girl named Lia who has zero coding experience (she's a BCom/CA accountant). Your job is to help her understand how to create and publish a Roblox game. Be very warm, use emojis, explain things like you're talking to a complete beginner. Keep answers concise but clear. If she asks about code, give her copy-paste ready Lua scripts with explanations. Always be encouraging and supportive! You know everything about Roblox Studio, Lua scripting, publishing games, and using AI tools to help with game development. Never be condescending. If she asks something unrelated to Roblox, gently guide her back but still be helpful.`;
+
+  fab.addEventListener('click', () => {
+    panel.classList.toggle('open');
+    if (panel.classList.contains('open') && msgs.children.length === 0) {
+      addMsg('bot', "Hii Lia! 👋💖 I'm your Roblox helper! Ask me anything about making your game — no question is too silly, I promise! 😊");
+    }
+  });
+
+  close.addEventListener('click', () => panel.classList.remove('open'));
+
+  send.addEventListener('click', sendMessage);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(); });
+
+  function addMsg(role, text) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + role;
+    div.innerHTML = `<div class="chat-bubble">${text}</div>`;
+    msgs.appendChild(div);
+    msgs.scrollTop = msgs.scrollHeight;
+  }
+
+  async function sendMessage() {
+    const text = input.value.trim();
+    if (!text) return;
+    input.value = '';
+    addMsg('user', text);
+
+    history.push({ role: 'user', content: text });
+
+    // typing indicator
+    const typing = document.createElement('div');
+    typing.className = 'chat-msg bot';
+    typing.innerHTML = '<div class="chat-bubble typing">✨ thinking...</div>';
+    msgs.appendChild(typing);
+    msgs.scrollTop = msgs.scrollHeight;
+
+    try {
+      const res = await fetch('https://text.pollinations.ai/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: [
+            { role: 'system', content: SYS },
+            ...history.slice(-10)
+          ],
+          model: 'openai',
+          temperature: 0.7
+        })
+      });
+      const answer = await res.text();
+      typing.remove();
+      history.push({ role: 'assistant', content: answer });
+      addMsg('bot', answer.replace(/\n/g, '<br>'));
+    } catch (e) {
+      typing.remove();
+      addMsg('bot', "Oops! I couldn't connect right now 😅 Try again in a moment, or reach out to Pablo for help! 📱");
+    }
+  }
+}
