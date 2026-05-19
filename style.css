@@ -7,7 +7,7 @@
   --mint: #4dffc3;
   --yellow: #ffe14d;
   --orange: #ff8c4d;
-  --bg: #0d0b1a;
+  --bg: #13112a;
   --card: rgba(255,255,255,0.06);
   --card-border: rgba(255,255,255,0.1);
   --text: #f0e6ff;
@@ -343,4 +343,44 @@ footer .heart { color:var(--pink); }
   height:2px; max-width:200px; margin:0 auto;
   background:linear-gradient(90deg,transparent,var(--purple),transparent);
   border-radius:2px;
+}
+
+/* === CONTACT SECTION === */
+.contact-section {
+  padding:40px 24px 60px;
+  display:flex; justify-content:center;
+}
+.contact-card {
+  background:linear-gradient(135deg,rgba(255,107,157,0.08),rgba(196,77,255,0.08));
+  border:1px solid rgba(255,107,157,0.2);
+  border-radius:24px; padding:40px; max-width:500px; width:100%;
+  text-align:center;
+}
+.contact-card h3 {
+  font-family:'Fredoka One',cursive;
+  font-size:1.4rem; margin-bottom:12px;
+}
+.contact-card > p { color:var(--text-dim); font-size:0.95rem; }
+.contact-info {
+  display:flex; flex-direction:column; gap:16px;
+  margin-top:24px;
+}
+.contact-item {
+  display:flex; align-items:center; gap:16px;
+  background:rgba(255,255,255,0.04); border:1px solid var(--card-border);
+  border-radius:16px; padding:16px 20px;
+  transition:all 0.3s;
+}
+.contact-item:hover {
+  border-color:var(--pink);
+  box-shadow:0 0 20px rgba(255,107,157,0.1);
+}
+.contact-icon { font-size:1.8rem; }
+.contact-label {
+  font-size:0.75rem; color:var(--text-dim);
+  text-transform:uppercase; letter-spacing:1px;
+}
+.contact-value {
+  font-size:1.1rem; font-weight:800;
+  color:var(--text);
 }
